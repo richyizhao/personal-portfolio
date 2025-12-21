@@ -50,18 +50,10 @@ const Skills = () => {
                       {skill.name}
                     </span>
 
-                    {skill.icon.includes(":") ? (
-                      <Icon
-                        icon={skill.icon}
-                        className={`mb-2 shrink-0 text-4xl ${skill.className ?? ""}`}
-                      />
-                    ) : (
-                      <img
-                        src={skill.icon}
-                        alt={skill.name}
-                        className={`mb-2 h-10 w-10 object-contain ${skill.className ?? ""}`}
-                      />
-                    )}
+                    <Icon
+                      icon={skill.icon}
+                      className={`mb-2 shrink-0 text-4xl ${skill.className ?? ""}`}
+                    />
                   </motion.div>
                 ))}
             </div>
