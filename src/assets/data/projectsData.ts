@@ -17,8 +17,8 @@ const projectsData = [
     technology: [
       { name: "Electron", icon: "logos:electron" },
       { name: "TypeScript", icon: "logos:typescript-icon" },
-      { name: "Redux", icon: "logos:redux" },
       { name: "React", icon: "logos:react" },
+      { name: "Redux", icon: "logos:redux" },
       { name: "Python", icon: "logos:python" },
       { name: "PyTorch", icon: "devicon:pytorch" },
     ] as TechnologyProps[],

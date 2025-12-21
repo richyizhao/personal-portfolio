@@ -44,7 +44,7 @@ const Skills = () => {
                       delay: skillIndex * 0.05,
                       duration: 0.25,
                     }}
-                    className="flex h-26 w-full flex-col items-center justify-center rounded-lg border border-black/5 bg-zinc-50 p-4 transition-colors hover:bg-zinc-200 dark:border-white/5 dark:bg-zinc-950 dark:hover:bg-zinc-800"
+                    className="flex h-26 w-full flex-col items-center justify-center rounded-lg border border-black/5 bg-zinc-50 p-4 transition-colors hover:bg-zinc-200 dark:border-white/5 dark:bg-zinc-900 dark:hover:bg-zinc-800"
                   >
                     <span className="mb-2 flex flex-1 items-center justify-center text-center text-xs leading-tight font-medium text-zinc-700 dark:text-zinc-300">
                       {skill.name}
