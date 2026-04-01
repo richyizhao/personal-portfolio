@@ -1,16 +1,19 @@
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { Icon } from "@iconify/react"
-import Footer from "../components/layout/Footer"
-import Button from "../components/ui/Button"
-import { skillsData } from "../assets/data/skillsData"
+import { motion } from "motion/react"
+import { Footer } from "../components/layout/Footer"
+import { Button } from "../components/ui/Button"
+import { SectionTitle } from "../components/ui/SectionTitle"
+import { skillsData } from "../data/data"
 
-const Skills = () => {
-  const [currentCategory, setCurrentCategory] = useState<string>(skillsData[0]?.category || "")
+export const Skills = () => {
+  const [currentCategory, setCurrentCategory] = useState(skillsData[0]?.category ?? "")
+  const activeSkillGroup =
+    skillsData.find((group) => group.category === currentCategory) ?? skillsData[0]
 
   return (
     <section id="skills" className="flex min-h-screen flex-col py-24 max-lg:pb-0">
-      <h2 className="mb-6 font-bold lg:hidden">SKILLS</h2>
+      <SectionTitle title="SKILLS" />
 
       <div className="flex flex-1 flex-col gap-y-8 max-lg:pb-12">
         <div className="flex flex-wrap justify-center gap-4">
@@ -33,29 +36,27 @@ const Skills = () => {
             className="flex justify-center"
           >
             <div className="grid max-w-4xl flex-1 grid-cols-3 gap-4">
-              {skillsData
-                .find((group) => group.category === currentCategory)
-                ?.skills.map((skill, skillIndex) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, y: 25 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: skillIndex * 0.05,
-                      duration: 0.25,
-                    }}
-                    className="flex h-26 w-full flex-col items-center justify-center rounded-lg border border-black/5 bg-zinc-50 p-4 transition-colors hover:bg-zinc-200 dark:border-white/5 dark:bg-zinc-900 dark:hover:bg-zinc-800"
-                  >
-                    <span className="mb-2 flex flex-1 items-center justify-center text-center text-xs leading-tight font-medium text-zinc-700 dark:text-zinc-300">
-                      {skill.name}
-                    </span>
+              {activeSkillGroup?.skills.map((skill, skillIndex) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 25 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: skillIndex * 0.05,
+                    duration: 0.25,
+                  }}
+                  className="flex h-26 w-full flex-col items-center justify-center rounded-lg border border-black/5 bg-zinc-50 p-4 transition-colors hover:bg-zinc-200 dark:border-white/5 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+                >
+                  <span className="mb-2 flex flex-1 items-center justify-center text-center text-xs leading-tight font-medium text-zinc-700 dark:text-zinc-300">
+                    {skill.name}
+                  </span>
 
-                    <Icon
-                      icon={skill.icon}
-                      className={`mb-2 shrink-0 text-4xl ${skill.className ?? ""}`}
-                    />
-                  </motion.div>
-                ))}
+                  <Icon
+                    icon={skill.icon}
+                    className={`mb-2 shrink-0 text-4xl ${skill.className ?? ""}`}
+                  />
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -65,5 +66,3 @@ const Skills = () => {
     </section>
   )
 }
-
-export default Skills

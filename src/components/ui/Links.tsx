@@ -1,32 +1,21 @@
-import { useState, useEffect } from "react"
 import { Icon } from "@iconify/react"
-import linksData from "./../../assets/data/linksData"
+import { linksData } from "../../data/data"
+import { useTheme } from "../../hooks/useTheme"
 
-const Links = () => {
-  // Theme mode using localStorage or system preference
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem("theme")
-    if (saved) return saved === "dark"
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-  })
-
-  // Save preference
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode)
-    localStorage.setItem("theme", darkMode ? "dark" : "light")
-  }, [darkMode])
+export const Links = () => {
+  const { isDarkMode, toggleTheme } = useTheme()
 
   return (
     <div className="flex gap-4 text-zinc-600 dark:text-zinc-400">
       <Icon
-        icon={darkMode ? "ri:moon-fill" : "ri:sun-fill"}
+        icon={isDarkMode ? "ri:moon-fill" : "ri:sun-fill"}
         className="cursor-pointer fill-current text-3xl select-none hover:text-black dark:hover:text-white"
-        onClick={() => setDarkMode((v) => !v)}
+        onClick={toggleTheme}
       />
 
-      {linksData.map((link, index) => (
+      {linksData.map((link) => (
         <a
-          key={index}
+          key={link.label}
           href={link.href}
           title={link.label}
           target="_blank"
@@ -41,5 +30,3 @@ const Links = () => {
     </div>
   )
 }
-
-export default Links

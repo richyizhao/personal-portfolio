@@ -1,7 +1,7 @@
-import Header from "./Header"
-import Main from "./Main"
+import { Header } from "./Header"
+import { Main } from "./Main"
 
-const Layout = () => {
+export const Layout = () => {
   return (
     <div className="relative mx-auto flex min-h-screen max-w-7xl flex-row gap-4 max-lg:flex-col max-lg:gap-0">
       <Header />
@@ -9,5 +9,3 @@ const Layout = () => {
     </div>
   )
 }
-
-export default Layout

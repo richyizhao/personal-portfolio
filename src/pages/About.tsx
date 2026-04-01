@@ -1,7 +1,9 @@
-const About = () => {
+import { SectionTitle } from "../components/ui/SectionTitle"
+
+export const About = () => {
   return (
     <section id="about" className="pt-24">
-      <h2 className="mb-6 font-bold lg:hidden">ABOUT</h2>
+      <SectionTitle title="ABOUT" />
 
       <div>
         <p className="mb-4">
@@ -38,5 +40,3 @@ const About = () => {
     </section>
   )
 }
-
-export default About
