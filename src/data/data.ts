@@ -1,3 +1,4 @@
+import InventoryTrackerImg from "../assets/projects/inventory-tracker/1.png"
 import AeruonauticsClubImg from "../assets/projects/aeronautics-club/1.png"
 import AnimalClassifier from "../assets/projects/animal-classifier/1.png"
 import ArduinoSonarRobot from "../assets/projects/arduino-sonar-rover/1.jpg"
@@ -18,28 +19,41 @@ export const navbarData: NavItem[] = [
 
 export const projectsData: Project[] = [
   {
-    title: "Aeronautics Club",
-    codeLink: "https://github.com/richyizhao/uoa-aeronautics-club-website",
-    demoLink: "https://www.aeronauticsuoa.com/",
+    title: "Inventory Tracker",
+    codeLink: "https://github.com/richyizhao/inventory-tracker-app",
     description:
-      "Website commissioned by the University of Auckland Aeronautics Club. Designed to clearly present the club's activities, overview of projects, past work, and opportunities for students to get involved.",
+      "Web app for inventory operations end to end with a system that handles reports, categories, products, transactions, and user management, along with scalable infrastructure for deployment.",
     features: [
-      "Hamburger menu with smooth animations and responsive design",
-      "Smooth fade-in page transitions",
+      "Dashboard and analytics views backed by dedicated reporting and inventory endpoints",
+      "Product, category, subcategory, and transaction workflows for end-to-end stock management",
+      "JWT authentication with session handling, profile updates, and role-based permissions",
+      "Demo-data generation plus unit and Playwright E2E testing workflows for development",
     ],
     badge: [
       { name: "TypeScript", icon: "logos:typescript-icon" },
       { name: "React", icon: "logos:react" },
+      { name: "Tanstack", icon: "simple-icons:tanstack" },
+      { name: "Shadcn", icon: "vscode-icons:file-type-light-shadcn" },
       { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
+      { name: "Vite", icon: "logos:vitejs" },
+      { name: "Vitest", icon: "logos:vitest" },
+      { name: "Playwright", icon: "logos:playwright" },
+      { name: "ASP.NET Core", icon: "logos:dotnet" },
+      { name: "xUnit", icon: "guidance:remove-x-cross" },
+      { name: "PostgreSQL", icon: "devicon:postgresql" },
+      { name: "Docker", icon: "logos:docker-icon" },
+      { name: "Github Actions", icon: "devicon:githubactions" },
+      { name: "Terraform", icon: "devicon:terraform" },
+      { name: "Azure", icon: "devicon:azure" },
     ],
-    image: AeruonauticsClubImg,
-    slug: "aeronautics-club",
+    image: InventoryTrackerImg,
+    slug: "inventory-tracker",
   },
   {
     title: "Animal Classifier",
     codeLink: "https://github.com/richyizhao/animal-classifier-app",
     description:
-      "Desktop AI app for analysing wildlife images and identifying individual animals. It features batch processing, species AI models, and identification results for streamlined conservation work.",
+      "Desktop app for AI analysing wildlife images and identifying individual animals. It features batch processing, species AI models, and identification results for streamlined conservation work.",
     features: [
       "Batch image processing for multiple images at once",
       "Species-specific AI model selection",
@@ -57,6 +71,24 @@ export const projectsData: Project[] = [
     ],
     image: AnimalClassifier,
     slug: "animal-classifier",
+  },
+  {
+    title: "Aeronautics Club",
+    codeLink: "https://github.com/richyizhao/uoa-aeronautics-club-website",
+    demoLink: "https://www.aeronauticsuoa.com/",
+    description:
+      "Website commissioned by the University of Auckland Aeronautics Club. Designed to clearly present the club's activities, overview of projects, past work, and opportunities for students to get involved.",
+    features: [
+      "Hamburger menu with smooth animations and responsive design",
+      "Smooth fade-in page transitions",
+    ],
+    badge: [
+      { name: "TypeScript", icon: "logos:typescript-icon" },
+      { name: "React", icon: "logos:react" },
+      { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
+    ],
+    image: AeruonauticsClubImg,
+    slug: "aeronautics-club",
   },
   {
     title: "Arduino Sonar Rover",
@@ -87,8 +119,8 @@ export const skillsData: SkillGroup[] = [
       { name: "React", icon: "logos:react" },
       { name: "Redux", icon: "logos:redux" },
       { name: "Expo", icon: "devicon:expo", className: "dark:invert" },
+      { name: "Shadcn", icon: "vscode-icons:file-type-light-shadcn", className: "dark:invert" },
       { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
-      { name: "Nativewind CSS", icon: "meteor-icons:wind" },
     ],
   },
   {
@@ -96,18 +128,22 @@ export const skillsData: SkillGroup[] = [
     skills: [
       { name: "Node.js", icon: "devicon:nodejs" },
       { name: "Express.js", icon: "devicon:express", className: "dark:invert" },
-      { name: ".Net", icon: "logos:dotnet" },
+      { name: "ASP.NET Core", icon: "logos:dotnet" },
       { name: "MongoDB", icon: "vscode-icons:file-type-mongo" },
-      { name: "PostgreSQL", icon: "devicon:postgresql" },
       { name: "SQLite", icon: "devicon:sqlite" },
+      { name: "PostgreSQL", icon: "devicon:postgresql" },
     ],
   },
   {
     category: "DevOps",
     skills: [
       { name: "Vitest", icon: "logos:vitest" },
+      { name: "Playwright", icon: "logos:playwright" },
+      { name: "xUnit", icon: "guidance:remove-x-cross" },
       { name: "Docker", icon: "logos:docker-icon" },
-      { name: "AWS", icon: "logos:aws" },
+      { name: "Github Actions", icon: "devicon:githubactions" },
+      { name: "Terraform", icon: "devicon:terraform" },
+      { name: "Azure", icon: "devicon:azure" },
     ],
   },
   {
