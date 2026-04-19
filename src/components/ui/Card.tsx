@@ -1,27 +1,106 @@
-import type { KeyboardEvent } from "react"
-import { cn } from "../../lib/cn"
-import type { CardProps } from "../../types/content"
+import * as React from "react"
 
-export const Card = ({ onClick, children, className }: CardProps) => {
-  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault()
-      onClick()
-    }
-  }
+import { cn } from "@/lib/utils"
 
+function Card({
+  className,
+  size = "default",
+  ...props
+}: React.ComponentProps<"div"> & { size?: "default" | "sm" }) {
   return (
     <div
-      onClick={onClick}
-      onKeyDown={handleKeyDown}
-      role="button"
-      tabIndex={0}
+      data-slot="card"
+      data-size={size}
       className={cn(
-        "relative cursor-pointer overflow-hidden rounded-lg border border-black/5 bg-zinc-100 transition-all duration-150 ease-out group-hover:scale-[1.02] hover:-translate-y-1 hover:bg-black/10 hover:shadow-lg hover:shadow-zinc-50/50 active:scale-[0.98] dark:border-white/5 dark:bg-zinc-900 dark:hover:bg-white/20 dark:hover:shadow-zinc-950/50",
-        className,
+        "group/card flex cursor-pointer flex-col gap-4 overflow-hidden rounded-lg bg-zinc-50 text-sm text-card-foreground ring-1 ring-foreground/10 transition-all duration-150 ease-out group-hover:scale-[1.01] hover:-translate-y-1 hover:shadow-lg hover:shadow-gray-300/30 active:scale-[0.98] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 dark:bg-zinc-900 dark:shadow-none dark:ring-0 dark:hover:bg-zinc-800 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
+        className
       )}
-    >
-      {children}
-    </div>
+      {...props}
+    />
   )
+}
+
+function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-header"
+      className={cn(
+        "group/card-header @container/card-header grid auto-rows-min items-start gap-3 rounded-t-xl group-data-[size=sm]/card:px-3 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-4 group-data-[size=sm]/card:[.border-b]:pb-3",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-title"
+      className={cn(
+        "text-xl leading-snug font-semibold group-data-[size=sm]/card:text-sm",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-description"
+      className={cn(
+        "text-sm leading-relaxed text-zinc-600 dark:text-zinc-400",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-action"
+      className={cn(
+        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-content"
+      className={cn("flex flex-col gap-4 p-6", className)}
+      {...props}
+    />
+  )
+}
+
+function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn(
+        "flex items-center rounded-b-xl border-t bg-muted/50 p-4 group-data-[size=sm]/card:p-3",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardAction,
+  CardDescription,
+  CardContent,
 }

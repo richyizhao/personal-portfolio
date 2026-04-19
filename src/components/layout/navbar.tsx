@@ -1,15 +1,22 @@
-import { navbarData } from "../../data/data"
-import { useActiveSection } from "../../hooks/useActiveSection"
+import { useActiveSection } from "@/hooks/useActiveSection"
 
-export const Navbar = () => {
-  const { activeSection, gliderStyle, itemRefs } = useActiveSection(navbarData)
+type NavbarItem = {
+  href: string
+  label: string
+}
+
+type Props = {
+  navbarItems: NavbarItem[]
+}
+
+export const Navbar = ({ navbarItems }: Props) => {
+  const { activeSection, gliderStyle, itemRefs } = useActiveSection(navbarItems)
 
   return (
-    <nav className="relative mb-16 flex-1 max-lg:hidden">
-      <ul className="relative flex list-none flex-col p-2">
-        {navbarData.map(({ href, label }, index) => {
+    <nav className="relative flex-1 max-lg:hidden">
+      <ul className="relative flex list-none flex-col">
+        {navbarItems.map(({ href, label }, index) => {
           const isActive = activeSection === href
-
           return (
             <li key={href}>
               <a
@@ -17,10 +24,10 @@ export const Navbar = () => {
                   itemRefs.current[index] = el
                 }}
                 href={href}
-                className={`block p-4 text-xs font-bold transition-colors duration-300 ${
+                className={`block px-6 py-4 text-xs font-bold transition-colors duration-300 ${
                   isActive
                     ? "text-black dark:text-white"
-                    : "text-zinc-500 hover:text-black dark:hover:text-white"
+                    : "text-zinc-600 hover:text-black dark:text-zinc-400 dark:hover:text-white"
                 }`}
               >
                 {label}

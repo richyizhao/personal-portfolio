@@ -1,12 +1,21 @@
 import { useEffect, useRef, useState } from "react"
-import type { GliderStyle, NavItem } from "../types/content"
+
+interface NavLinks {
+  href: string
+  label: string
+}
+
+interface GliderStyle {
+  height: number
+  top: number
+}
 
 const DEFAULT_GLIDER_STYLE: GliderStyle = {
   height: 0,
   top: 0,
 }
 
-export const useActiveSection = (items: NavItem[]) => {
+export const useActiveSection = (items: NavLinks[]) => {
   const [activeSection, setActiveSection] = useState(items[0]?.href ?? "")
   const [gliderStyle, setGliderStyle] = useState<GliderStyle>(DEFAULT_GLIDER_STYLE)
   const itemRefs = useRef<Array<HTMLAnchorElement | null>>([])

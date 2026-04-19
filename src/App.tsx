@@ -1,3 +1,7 @@
-import { Layout } from "./components/layout/Layout"
+import { Layout } from "@/components/layout/layout"
 
-export const App = () => <Layout />
+export const App = () => {
+  return <Layout />
+}
+
+export default App
