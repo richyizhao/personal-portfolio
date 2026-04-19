@@ -21,26 +21,42 @@ export const useActiveSection = (items: NavLinks[]) => {
   const itemRefs = useRef<Array<HTMLAnchorElement | null>>([])
 
   useEffect(() => {
-    const sections = document.querySelectorAll<HTMLElement>("section[id]")
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((entryA, entryB) => entryA.boundingClientRect.top - entryB.boundingClientRect.top)
-
-        if (visibleEntries.length === 0) {
-          return
-        }
-
-        setActiveSection(`#${visibleEntries[0].target.id}`)
-      },
-      { threshold: 0.5 },
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>("section[id]")
     )
 
-    sections.forEach((section) => observer.observe(section))
+    if (sections.length === 0) {
+      return
+    }
 
-    return () => observer.disconnect()
+    const updateActiveSection = () => {
+      const viewportMiddle = window.innerHeight * 0.35
+
+      const currentSection = sections.find((section, index) => {
+        const rect = section.getBoundingClientRect()
+        const nextSection = sections[index + 1]
+
+        if (!nextSection) {
+          return rect.top <= viewportMiddle
+        }
+
+        const nextRect = nextSection.getBoundingClientRect()
+        return rect.top <= viewportMiddle && nextRect.top > viewportMiddle
+      })
+
+      if (currentSection) {
+        setActiveSection(`#${currentSection.id}`)
+      }
+    }
+
+    updateActiveSection()
+    window.addEventListener("scroll", updateActiveSection, { passive: true })
+    window.addEventListener("resize", updateActiveSection)
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection)
+      window.removeEventListener("resize", updateActiveSection)
+    }
   }, [])
 
   useEffect(() => {

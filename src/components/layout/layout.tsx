@@ -16,11 +16,11 @@ export const Layout = () => {
             <h1 className="mb-2 text-center text-5xl font-bold lg:text-start">
               Richard Y. Zhao
             </h1>
-            <p className="mb-4 text-center text-xl font-semibold lg:text-start">
-              Full Stack Developer
+            <p className="text-center text-xl font-semibold lg:text-start">
+              Software Developer
             </p>
             <p className="text-center text-zinc-600 lg:text-start dark:text-zinc-400">
-              Forging websites & applications{" "}
+              Forging robust websites & applications{" "}
               <span className="inline lg:block">
                 for seamless user experience.
               </span>

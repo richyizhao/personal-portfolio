@@ -4,6 +4,9 @@ import { createRoot } from "react-dom/client"
 import "./global.css"
 import App from "./App.tsx"
 import { ThemeProvider } from "@/components/theme-provider.tsx"
+import { applySeoMetadata } from "@/lib/seo"
+
+applySeoMetadata()
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
