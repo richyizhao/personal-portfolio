@@ -69,7 +69,7 @@ export const SkillsSection = () => {
       </div>
 
       <div className="text-end text-sm text-muted-foreground">
-        Copyright {new Date().getFullYear()}. All Rights Reserved.
+        Copyright &copy; {new Date().getFullYear()}. All Rights Reserved.
       </div>
     </section>
   )
